@@ -19,14 +19,13 @@ if (Array.isArray(members)) {
  members.sort();
  for (let i=0; i< members.length; i++)
  {
-     if (typeof members[i] === 'string' && members[i] !== " ")
+     if (typeof members[i] === 'string' && members[i] !== '')
      {
-     res.push(members[i].charAt(0));
-     
+      res.push(members[i].replace(/\s/g,'').charAt(0));
  }
 }
-res.toString().toUpperCase();
-return res.join('');
+
+return res.join('').toUpperCase();
 }
 
 return false;

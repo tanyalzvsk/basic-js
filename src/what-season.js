@@ -15,16 +15,7 @@ const { NotImplementedError } = require('../extensions/index.js');
   if (!(date instanceof Date && !isNaN(date))) {
     throw new Error('Invalid date!');
 }
-const year = date.getFullYear();
-    const month = date.getMonth();
-    const day = date.getDate();
 
-    const newDate = new Date(year, month, day);
-
-    if (newDate.getFullYear() !== year || newDate.getMonth() !== month || newDate.getDate() !== day) {
-        throw new Error('Invalid date!');
-    }
-  if (!isNaN(date.getTime())){
     let month = date.getMonth();
     if (month == 11 || month == 1 || month == 0) {
         return 'winter';
@@ -38,7 +29,6 @@ const year = date.getFullYear();
     else {
         return 'autumn';
     }
-  }
 }
   getSeason(new Date(2020, 02, 31));
 
