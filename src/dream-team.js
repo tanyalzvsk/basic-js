@@ -16,15 +16,16 @@ const { NotImplementedError } = require('../extensions/index.js');
  function createDreamTeam(members) {
   let res = [];
 if (Array.isArray(members)) {
- members.sort();
+
  for (let i=0; i< members.length; i++)
- {
+ {  
+   
      if (typeof members[i] === 'string' && members[i] !== '')
      {
       res.push(members[i].replace(/\s/g,'').charAt(0));
  }
 }
-
+res.sort();
 return res.join('').toUpperCase();
 }
 
