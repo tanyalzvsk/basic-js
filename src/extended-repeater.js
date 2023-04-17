@@ -19,32 +19,30 @@ function repeater(str, options) {
   if (typeof str !== 'string') {
    str = String(str);
   }
-  let separator = options.separator;
-  let repeatTimes = options.repeatTimes;
-  let addition = options.addition;
+  let separator = options.separator || "+";
+  let repeatTimes = options.repeatTimes || 1;
+  let addition = "";
+  if (options.addition !== undefined) {
+    addition = String(options.addition);
+  }
+  let additionSeparator = options.additionSeparator || '|';
+  let additionRepeatTimes = options.additionRepeatTimes || 1;
  
-  let additionSeparator = options.additionSeparator;
-  let additionRepeatTimes = options.additionRepeatTimes;
-  if (options.separator !== undefined) {
-      let separator = "+";
-    }
-  if (options.repeatTimes !== undefined) {
-      let repeatTimes = 1;
-    }
+  let repeated = '';
+for (let i = 0; i < repeatTimes; i++) {
+  repeated += str;
+  for (let j = 0; j < additionRepeatTimes; j++) {
     if (options.addition !== undefined) {
-      addition = String(options.addition);
-    if (options.additionSeparator == undefined) {
-        let additionSeparator = "|";
-      }
-    if (additionRepeatTimes == undefined) {
-        let additionRepeatTimes = 1;
-      } 
-    
+      repeated += addition;
     }
-    else {
-      let addition = '';
+    if (j < additionRepeatTimes - 1) {
+      repeated += additionSeparator;
     }
-    let repeated = new Array(repeatTimes).fill(str + new Array(additionRepeatTimes).fill(addition).join(additionSeparator)).join(separator);
+  }
+  if (i < repeatTimes - 1) {
+    repeated += separator;
+  }
+}
   return repeated;
 }
 
