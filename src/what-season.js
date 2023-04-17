@@ -13,7 +13,7 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
  function getSeason(date) {
    if (arguments.length == 1) {
-  if (!(date instanceof Date && !isNaN(date))) {
+  if (!(date instanceof Date) || isNaN(date.getTime) || Object.prototype.toString.call(date) !== "[object Date]") {
     throw new Error('Invalid date!');
 }
 
